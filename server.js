@@ -5,10 +5,9 @@
 //  res.write('Hello! This is Team Atlas Cloud');
  //  res.end('');
 //}).listen(8080); 
-var http = require('http');
+
 var mysql = require('mysql');
 
-http.createServer(function (req, res) {
   var con = mysql.createConnection({
   host: 'custome-mysql.gamification.svc.cluster.local',
   user: 'xxuser',
@@ -16,10 +15,6 @@ http.createServer(function (req, res) {
 });
 
 con.connect(function(err) {
-  if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
-    }  
-  res.end('Connected!');
+  if (err) throw err;
+  console.log("Connected!");
 });
-  }).listen(8080);
