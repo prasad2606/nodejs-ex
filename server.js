@@ -7,24 +7,11 @@
 //}).listen(8080); 
 
 var mysql = require('mysql');
-var http = require('http');
 var con = mysql.createConnection({
   host: 'custom-mysql.gamification.svc.cluster.local',
   user: 'xxuser',
-  password: 'welcome1'
+  password: 'welcome1',
+  database: 'sampledb'
 });
 
-
-http.createServer(function (req, res) {
-
-con.connect(function(err) {
-if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end('404 Not Found');
-    }; 
-res.writeHead(200, {'Content-Type': 'text/html'});
-res.end('Connected!');
-
-});
-
-}).listen(8080);
+connection.connect();
